@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduGenie | AI Learning Assistant</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header class="navbar">
+        <div class="brand">
+            <div class="brand-icon">E</div>
+
+            <div>
+                <h2>EduGenie</h2>
+                <span>AI Learning Assistant</span>
+            </div>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI System Online
+        </div>
+    </header>
+
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <div class="badge">
+                    ✦ Powered by AI
+                </div>
+
+                <h1>
+                    Learn smarter.
+                    <span>Understand better.</span>
+                </h1>
+
+                <p>
+                    EduGenie brings AI-powered learning tools together
+                    in one simple platform for students.
+                </p>
+
+            </div>
+
+            <div class="hero-symbol">
+                <div class="circle">
+                    <span>✦</span>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Section Heading -->
+        <section class="section-heading">
+
+            <div>
+                <h2>Learning Tools</h2>
+                <p>Select a tool and start learning.</p>
+            </div>
+
+        </section>
+
+
+        <!-- Tools -->
+        <section class="tools-grid">
+
+
+            <!-- Q&A -->
+            <div class="tool-card">
+
+                <div class="tool-icon qa-icon">
+                    ?
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Ask a Question</h3>
+
+                    <p>
+                        Get clear and simple answers to your
+                        questions using AI.
+                    </p>
+
+                    <form action="/process" method="post">
+
+                        <input
+                            type="hidden"
+                            name="task"
+                            value="qa"
+                        >
+
+                        <textarea
+                            name="input_text"
+                            placeholder="Ask something..."
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Ask Question
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Explanation -->
+            <div class="tool-card">
+
+                <div class="tool-icon explain-icon">
+                    ☰
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Explain a Topic</h3>
+
+                    <p>
+                        Understand difficult concepts through
+                        simple explanations.
+                    </p>
+
+                    <form action="/process" method="post">
+
+                        <input
+                            type="hidden"
+                            name="task"
+                            value="explain"
+                        >
+
+                        <textarea
+                            name="input_text"
+                            placeholder="Enter a topic..."
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Explain Topic
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Quiz -->
+            <div class="tool-card">
+
+                <div class="tool-icon quiz-icon">
+                    ✓
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Generate Quiz</h3>
+
+                    <p>
+                        Test your knowledge with AI-generated
+                        multiple-choice questions.
+                    </p>
+
+                    <form action="/process" method="post">
+
+                        <input
+                            type="hidden"
+                            name="task"
+                            value="quiz"
+                        >
+
+                        <textarea
+                            name="input_text"
+                            placeholder="Enter a topic..."
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Create Quiz
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Summarization -->
+            <div class="tool-card">
+
+                <div class="tool-icon summary-icon">
+                    ≡
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Summarize Text</h3>
+
+                    <p>
+                        Turn long content into short and
+                        easy-to-understand summaries.
+                    </p>
+
+                    <form action="/process" method="post">
+
+                        <input
+                            type="hidden"
+                            name="task"
+                            value="summarize"
+                        >
+
+                        <textarea
+                            name="input_text"
+                            placeholder="Paste your text..."
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Summarize
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- Learning Path -->
+            <div class="tool-card">
+
+                <div class="tool-icon path-icon">
+                    ↗
+                </div>
+
+                <div class="tool-content">
+
+                    <h3>Learning Path</h3>
+
+                    <p>
+                        Get a structured learning path from
+                        beginner to advanced concepts.
+                    </p>
+
+                    <form action="/process" method="post">
+
+                        <input
+                            type="hidden"
+                            name="task"
+                            value="recommend"
+                        >
+
+                        <textarea
+                            name="input_text"
+                            placeholder="Enter a subject..."
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Build Path
+                            <span>→</span>
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Result -->
+        {% if result %}
+
+        <section class="result-section">
+
+            <div class="result-header">
+
+                <div>
+                    <span class="result-label">
+                        AI RESPONSE
+                    </span>
+
+                    <h2>
+                        Your Result
+                    </h2>
+                </div>
+
+                <div class="result-status">
+                    ✓ Generated
+                </div>
+
+            </div>
+
+            <div class="result-box">
+
+                <div class="result-icon">
+                    ✦
+                </div>
+
+                <div class="result-text">
+                    {{ result }}
+                </div>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+        <!-- Footer -->
+        <footer>
+
+            <div>
+                <strong>EduGenie</strong>
+                <span> · AI-powered learning platform</span>
+            </div>
+
+            <div>
+                Built for smarter learning
+            </div>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
